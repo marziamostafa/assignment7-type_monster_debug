@@ -46,6 +46,7 @@ const typeController = (e) => {
     display.innerHTML += `<span class="green">${newLetter === " " ? "▪" : newLetter}</span>`;
   } else {
     display.innerHTML += `<span class="red">${newLetter === " " ? "▪" : newLetter}</span>`;
+    errorCount = errorCount + 1;
   }
 
   // check if given question text is equal to user typed text
@@ -72,7 +73,7 @@ const gameOver = () => {
   // show result modal
   resultModal.innerHTML = "";
   resultModal.classList.toggle("hidden");
-  modalBackground.classList.toggle("hidden");
+  modalBackground.classList.toggle("hidden", false);
   // clear user text
   display.innerHTML = "";
   // make it inactive
@@ -124,7 +125,7 @@ const start = () => {
 };
 
 // START Countdown
-startBtn.addEventListener("click", start());
+startBtn.addEventListener("click", start);
 
 // If history exists, show it
 displayHistory();
@@ -132,7 +133,7 @@ displayHistory();
 // Show typing time spent
 setInterval(() => {
   const currentTime = new Date().getTime();
-  const timeSpent = (currentTime - startTime) / 1000;
+  const timeSpent = Math.ceil((currentTime - startTime) / 1000);
 
 
   document.getElementById("show-time").innerHTML = `${startTime ? timeSpent : 0} seconds`;

@@ -7,7 +7,7 @@ function addHistory(questionText, timeTaken, errorCount) {
   newRow.innerHTML = `
   <h3>${questionText}</h3>
   <div>
-  <p>You took: <span class="bold">${timeTaken}</span> seconds</p>
+  <p>You took: <span class="bold">${Math.ceil(timeTaken)}</span> seconds</p>
   <p>You made <span class="bold red">${errorCount}</span> mistakes</p>
   </div>
   `;
@@ -31,7 +31,7 @@ function displayHistory() {
 
     newRow.innerHTML = `
   <h3 class="qst-txt">${test.questionText}</h3>
-  <p class="takentime">You took: <span class="bold">${test.timeTaken}</span> seconds</p>
+  <p class="takentime">You took: <span class="bold">${Math.ceil(test.timeTaken)}</span> seconds</p>
     <p>You made <span class="bold red">${test.errorCount}</span> mistakes</p>
   `;
 
